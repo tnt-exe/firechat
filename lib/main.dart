@@ -1,3 +1,6 @@
+import 'package:firechat/screens/chat_screen.dart';
+import 'package:firechat/screens/login_screen.dart';
+import 'package:firechat/screens/register_screen.dart';
 import 'package:firechat/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +17,13 @@ class Firechat extends StatelessWidget {
           bodyLarge: TextStyle(color: Colors.black54),
         ),
       ),
-      home: WelcomeScreen(),
+      initialRoute: WelcomeScreen.id,
+      routes: {
+        WelcomeScreen.id: (context) => WelcomeScreen(),
+        LoginScreen.id: (context) => LoginScreen(),
+        RegisterScreen.id: (context) => RegisterScreen(),
+        ChatScreen.id: (context) => ChatScreen(),
+      },
     );
   }
 }
