@@ -29,7 +29,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   child: Image.asset('images/logo.png'),
                 ),
                 Text(
-                  'Flash Chat',
+                  'Fire Chat',
                   style: TextStyle(
                     fontSize: 45.0,
                     fontWeight: FontWeight.w900,
