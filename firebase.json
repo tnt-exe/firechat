@@ -1,0 +1,22 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "firechat-fdb72",
+          "appId": "1:1011677316548:android:18838706a3fe03f9991091",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "firechat-fdb72",
+          "configurations": {
+            "android": "1:1011677316548:android:18838706a3fe03f9991091",
+            "web": "1:1011677316548:web:94737e519006ff7c991091"
+          }
+        }
+      }
+    }
+  }
+}

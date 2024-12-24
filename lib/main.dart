@@ -1,10 +1,17 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firechat/firebase_options.dart';
 import 'package:firechat/screens/chat_screen.dart';
 import 'package:firechat/screens/login_screen.dart';
 import 'package:firechat/screens/register_screen.dart';
 import 'package:firechat/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(Firechat());
+void main() {
+  Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(Firechat());
+}
 
 class Firechat extends StatelessWidget {
   const Firechat({super.key});
