@@ -6,8 +6,9 @@ import 'package:firechat/screens/register_screen.dart';
 import 'package:firechat/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  Firebase.initializeApp(
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(Firechat());
