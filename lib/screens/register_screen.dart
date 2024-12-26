@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firechat/common/constants.dart';
+import 'package:firechat/screens/chat_screen.dart';
 import 'package:firechat/widgets/round_button.dart';
 import 'package:flutter/material.dart';
 
@@ -12,8 +14,9 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  String? email;
-  String? password;
+  final _auth = FirebaseAuth.instance;
+  late String email;
+  late String password;
 
   @override
   Widget build(BuildContext context) {
@@ -62,8 +65,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
             RoundButton(
               title: "Register",
               color: Colors.blueAccent,
-              onPressed: () {
-                //Implement registration functionality.
+              onPressed: () async {
+                try {
+                  final registerUser =
+                      await _auth.createUserWithEmailAndPassword(
+                          email: email, password: password);
+                  if (registerUser.user != null) {
+                    Navigator.pushNamed(context, ChatScreen.id);
+                  }
+                } catch (e) {
+                  //print(e);
+                }
               },
             ),
           ],
