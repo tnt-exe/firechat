@@ -77,6 +77,7 @@ class _ChatScreenState extends State<ChatScreen> {
           children: [
             MessageStream(
               firestore: _firestore,
+              userEmail: loggedInUser.email!,
             ),
             Container(
               decoration: kMessageContainerDecoration,

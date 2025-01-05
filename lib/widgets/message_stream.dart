@@ -4,7 +4,12 @@ import 'package:flutter/material.dart';
 
 class MessageStream extends StatelessWidget {
   final FirebaseFirestore firestore;
-  const MessageStream({super.key, required this.firestore});
+  final String userEmail;
+  const MessageStream({
+    super.key,
+    required this.firestore,
+    required this.userEmail,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +33,7 @@ class MessageStream extends StatelessWidget {
           final messageBubble = MessageBubble(
             messageText: messageText,
             messageSender: messageSender,
+            isMe: userEmail == messageSender,
           );
           messageBubbles.add(messageBubble);
         }
