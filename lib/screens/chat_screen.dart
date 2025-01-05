@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firechat/common/constants.dart';
 import 'package:firechat/screens/welcome_screen.dart';
+import 'package:firechat/widgets/message_stream.dart';
 import 'package:flutter/material.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -73,32 +74,8 @@ class _ChatScreenState extends State<ChatScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            StreamBuilder<QuerySnapshot>(
-              stream: _firestore.collection("messages").snapshots(),
-              builder: (context, snapshot) {
-                if (!snapshot.hasData) {
-                  return Center(
-                    child: CircularProgressIndicator(
-                      backgroundColor: Colors.lightBlueAccent,
-                    ),
-                  );
-                }
-
-                final messages = snapshot.data!.docs;
-                List<Text> messageWidgets = [];
-                for (var message in messages) {
-                  final messageText = message.get('text');
-                  final messageSender = message.get("sender");
-
-                  final messageWidget =
-                      Text('$messageText from $messageSender');
-                  messageWidgets.add(messageWidget);
-                }
-
-                return Column(
-                  children: messageWidgets,
-                );
-              },
+            MessageStream(
+              firestore: _firestore,
             ),
             Container(
               decoration: kMessageContainerDecoration,
